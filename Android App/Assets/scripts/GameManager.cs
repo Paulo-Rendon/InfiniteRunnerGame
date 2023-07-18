@@ -19,13 +19,26 @@ public class GameManager : MonoBehaviour
     // Instance of the GameManager object
     public static GameManager inst;
     // Float array that stores the three x values the player object is allowed to move to
-     public static float [] rails = new float[3] {-3, 0, 3};
+    public static float [] rails = new float[3] {-3, 0, 3};
     // The text representation of the score for this specific playthorugh
     [SerializeField] Text scoreText;
     // The text representation of the coins collected for this specific playthorugh
      [SerializeField] Text coinText;
     // Object that reflects the player's current movement (Called to increase players forward movement)
     [SerializeField] PlayerMovement playerMovement;
+    public int magnetLevel = 0;
+
+    public int MagnetLevel{
+        get{return magnetLevel;}
+    }
+    public int shieldLevel = 0;
+    public int ShieldLevel{
+        get{return shieldLevel;}
+    }
+    public int invincibleLevel = 0;
+    public int InvincibleLevel{
+        get{return invincibleLevel;}
+    }
 
     // Function Name: IncrementScore
     // Arg: int amount: The amount the score should increment (defaults to 1 but is overwritten when a coin is picked up)
@@ -53,6 +66,22 @@ public class GameManager : MonoBehaviour
         coinText.text = $"coins: {coins}";  // Update the coin text object
 
         IncrementScore(300);    // Call IncrementScore with a amount argument of 300
+    }
+
+    public void actMagnet()
+    {
+        Debug.Log("Picked up a magnet powerup!");
+        playerMovement.MagTime((magnetLevel/2)*5f);
+    }
+
+    public void actInvincible()
+    {
+        Debug.Log("Picked up a invincibility powerup!");
+    }
+
+    public void actShield()
+    {
+        Debug.Log("Picked up a shield powerup!");
     }
 
     private void Awake()

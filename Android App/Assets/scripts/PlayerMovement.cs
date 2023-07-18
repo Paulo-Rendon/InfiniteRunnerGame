@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     // SerializeField means it is accessable from Unity but not other scripts
     // Like a limited version of the public descriptor
     [SerializeField] Rigidbody rb; // The playerObject
+    [SerializeField] LayerMask coins;
 
     private Animator animator;
 
@@ -31,10 +33,31 @@ public class PlayerMovement : MonoBehaviour
 
     // If the player can still move horizontally (stops when the button is held to help avoid accidential movement)
     bool canMove = true;
+
+    float magTime = 0f;
+    public void MagTime(float val){
+        magTime = val;
+    }
+    bool magActive = false;
+    float shieldTime = 0f;
+    public void ShieldTime(float val){
+        shieldTime = val;
+    }
+    bool shieldActive = false;
+    float invincTime = 0f;
+    public void InvincTime(float val){
+        invincTime = val;
+    }
+    bool invincActive = false;
     
     void Start(){
         animator = GetComponent<Animator>();
         animator.SetBool("isDead", false);
+    }
+
+    void OnDrawGizmos()
+    {
+        //Gizmos.DrawWireSphere(rb.position, 7f);
     }
 
     private void FixedUpdate()
@@ -97,6 +120,12 @@ public class PlayerMovement : MonoBehaviour
                                         // Shouldn't happen unless an issue occurs with a game function so should be checked
             Die();  // Call the Die function
         }
+        if(magTime > 0f && !magActive)
+            StartCoroutine(actMagnet());
+        if(shieldTime > 0f && !shieldActive)
+            StartCoroutine(actShield());
+        if(invincTime > 0f && !invincActive)
+            StartCoroutine(actInvinc());
     }
 
     // Function Name: Die
@@ -114,5 +143,44 @@ public class PlayerMovement : MonoBehaviour
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reloads the currently active scene (the game scene)
+    }
+
+    private IEnumerator actMagnet(){
+        magActive = true;
+        Collider []res = {};
+        while(magTime > 0f){
+            res = Physics.OverlapSphere(rb.position, 7f, coins);
+            for(int i = 0; i < res.Length; i++){
+                Vector3 magnetField =res[i].gameObject.transform.position - rb.position;
+                float index = (7f-magnetField.magnitude)/7f;
+                //Debug.Log($"magnetic field: {magnetField}\t index: {index}\t coin #: {i}\t coin pos: {res[i].gameObject.transform.position}");
+                res[i].gameObject.GetComponent<Rigidbody>().MovePosition(magnetField + res[i].gameObject.transform.position * Time.fixedDeltaTime);
+                //Debug.Log($"coint #: {i} new coin pos: {res[i].gameObject.transform.position}");
+            }
+            magTime -= Time.fixedDeltaTime;
+            //Debug.Log($"{(int)res.Length} coins in sphere of magnet powerup");
+            yield return null;
+        }
+        magActive = false;
+        yield return null;
+    }
+
+    private IEnumerator actShield(){
+        shieldActive = true;
+        while(shieldTime > 0f){
+            Debug.Log("Shield still active");
+            yield return null;
+        }
+        shieldActive = false;
+        yield return null;
+    }
+
+    private IEnumerator actInvinc(){
+        invincActive = true;
+        while(invincTime > 0f){
+            Debug.Log("Invincibility still active");
+            yield return null;
+        }
+        yield return null;
     }
 }

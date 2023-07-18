@@ -3,7 +3,19 @@ guid: 2c65d08de4da7b1449a51658be395d85
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - coinPrefab: {fileID: 3511109940218081978, guid: df4f8b071fe19714b9cde7ee616a26fa,
+      type: 3}
+  - obstaclePrefab: {fileID: 3761095008252948375, guid: cdc59abacb877594db68c15aba9aeac5,
+      type: 3}
+  - cactiPrefab: {fileID: 5637475599360410735, guid: 37b811980220ddf42b2b54dc93ea607e,
+      type: 3}
+  - magnetPrefab: {fileID: 1759565942326075831, guid: f91820ac24ed9a941b6f1d3191c66f2d,
+      type: 3}
+  - shieldPrefab: {fileID: 4616064257213360761, guid: 8f53566596eee414daac23ea011d7066,
+      type: 3}
+  - invinciblePrefab: {fileID: 115667225570068561, guid: 473e3c7738d91df4c8eb9a3a015945cb,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 0dcf1593e20f24c49bf0de895ca1e72f
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      74: -7906184280053792553
+    second: Circle|Circle.001Action
+  - first:
+      74: 2653181187088022880
+    second: Circle|Circle.001Action.001
+  - first:
+      74: -1218766248890309208
+    second: Circle|Circle.001Action.002
+  - first:
+      74: 4951151311818284614
+    second: Circle|Circle.002Action
+  - first:
+      74: -1817239873306570641
+    second: Circle|Circle.002Action.001
+  - first:
+      74: 6997882522552206460
+    second: Circle|CircleAction
+  - first:
+      74: 8971653179785726973
+    second: Circle.001|Circle.001Action
+  - first:
+      74: -9011658075762179022
+    second: Circle.001|Circle.001Action.001
+  - first:
+      74: -6315104253237919245
+    second: Circle.001|Circle.001Action.002
+  - first:
+      74: 527441545980225517
+    second: Circle.001|Circle.002Action
+  - first:
+      74: 2881472353406319702
+    second: Circle.001|Circle.002Action.001
+  - first:
+      74: -8206343707815358202
+    second: Circle.001|CircleAction
+  - first:
+      74: -1994214043775166236
+    second: Circle.002|Circle.001Action
+  - first:
+      74: -7700669437256086560
+    second: Circle.002|Circle.001Action.001
+  - first:
+      74: -8711711137774240370
+    second: Circle.002|Circle.001Action.002
+  - first:
+      74: -5618668722802028542
+    second: Circle.002|Circle.002Action
+  - first:
+      74: 5625407454060520889
+    second: Circle.002|Circle.002Action.001
+  - first:
+      74: -5183278990363598592
+    second: Circle.002|CircleAction
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: car_paint
+    second: {fileID: 2100000, guid: 50f29c1b73ed9e64d96872e96a2dccec, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

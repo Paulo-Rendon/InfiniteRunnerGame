@@ -26,7 +26,6 @@ public class Coin : MonoBehaviour
         {
             return;
         }
-
         // Else (the "other" is the player object) destroy the coin and increment the coin counter
         Destroy(gameObject);
         GameManager.inst.IncrementCoin();
@@ -42,6 +41,6 @@ public class Coin : MonoBehaviour
     // rotate the coin
     void Update()
     {
-        transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
+        //transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
     }
 }
