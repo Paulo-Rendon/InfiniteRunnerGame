@@ -12,6 +12,12 @@ public class GroundTile : MonoBehaviour
         // Stores the obstacle prefab
     [SerializeField] GameObject obstaclePrefab;
 
+    [SerializeField] GameObject cactiPrefab;
+    [SerializeField] GameObject magnetPrefab;
+    [SerializeField] GameObject shieldPrefab;
+    [SerializeField] GameObject invinciblePrefab;
+    private int obstacleSpawnIndex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,18 +34,62 @@ public class GroundTile : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
+    private Transform GetPowerupLocation(int obstacleSpawnIndex)
+    {
+        int powerupSpawnIndex = Random.Range(2, 5);
+        if(powerupSpawnIndex == obstacleSpawnIndex)
+            powerupSpawnIndex = (powerupSpawnIndex + 1)%3 + 2;
+        return transform.GetChild(powerupSpawnIndex).transform;
+    }
     // Function Name: SpawnObstacle
     // arg: None
     // Desc: Determines where and when to spawn in an obstacle object
-    public void SpawnObstacle()
+    public void SpawnObstacle(Powerup powerup = Powerup.none)
     {
         // choose random point to spawn obstacle
         // including 1st value, excluding the last
-        int obstacleSpawnIndex = Random.Range(2, 5);    // An index value within the rails float in GameManager
+        obstacleSpawnIndex = Random.Range(2, 5);    // An index value within the rails float in GameManager
+
+        // spawnPowerUps && !Random.Range(0, 20)
+        // I think that will work, but if not Random.Range(0, 20) == 0 should have the effect I want
+        
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;    // Use that ObstacleSpawnIndex to find the position where the obstacle should spawn
 
         // spawn obstacle at position
         Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
+
+        // Handles the cacti spawning (should move to its own function, maybe within a sand class)
+        for(int i = 1; i <= 4; i++)
+        {
+            // 10% chance of a cactus spawning
+            if(Random.Range(1, 11) == 1)
+            {
+                spawnPoint = transform.GetChild(4+i).transform;
+                Instantiate(cactiPrefab, spawnPoint.position, Quaternion.identity, transform);
+            }
+        }
+    }
+
+    public void SpawnPowerup(Powerup powerup = Powerup.none)
+    {
+        Transform powerSpawnPoint;
+        switch(powerup){
+            case Powerup.none:
+                break;
+            case Powerup.magnet:
+                powerSpawnPoint = GetPowerupLocation(obstacleSpawnIndex);
+                Instantiate(magnetPrefab, powerSpawnPoint.position, Quaternion.identity, transform);
+                break;
+            case Powerup.invincible:
+                powerSpawnPoint = GetPowerupLocation(obstacleSpawnIndex);
+                Instantiate(invinciblePrefab, powerSpawnPoint.position, Quaternion.identity, transform);
+                break;
+
+            case Powerup.shield:
+                powerSpawnPoint = GetPowerupLocation(obstacleSpawnIndex);
+                Instantiate(shieldPrefab, powerSpawnPoint.position, Quaternion.identity, transform);
+                break;
+        }
     }
 
     // Function Name: SpawnCoins
