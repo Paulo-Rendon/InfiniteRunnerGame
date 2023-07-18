@@ -151,11 +151,11 @@ public class PlayerMovement : MonoBehaviour
         while(magTime > 0f){
             res = Physics.OverlapSphere(rb.position, 7f, coins);
             for(int i = 0; i < res.Length; i++){
-                Vector3 magnetField =res[i].gameObject.transform.position - rb.position;
+                Vector3 magnetField = rb.transform.position - res[i].gameObject.transform.position;
                 float index = (7f-magnetField.magnitude)/7f;
-                //Debug.Log($"magnetic field: {magnetField}\t index: {index}\t coin #: {i}\t coin pos: {res[i].gameObject.transform.position}");
-                res[i].gameObject.GetComponent<Rigidbody>().MovePosition(magnetField + res[i].gameObject.transform.position * Time.fixedDeltaTime);
-                //Debug.Log($"coint #: {i} new coin pos: {res[i].gameObject.transform.position}");
+                Debug.Log($"magnetic field: {magnetField}\t index: {index}\t coin #: {i}\t coin pos: {res[i].gameObject.transform.position}");
+                res[i].gameObject.GetComponent<Rigidbody>().MovePosition(res[i].gameObject.transform.position + magnetField * index);
+                Debug.Log($"coin #: {i} new coin pos: {res[i].gameObject.transform.position}");
             }
             magTime -= Time.fixedDeltaTime;
             //Debug.Log($"{(int)res.Length} coins in sphere of magnet powerup");
