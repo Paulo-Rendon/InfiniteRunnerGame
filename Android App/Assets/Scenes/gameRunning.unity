@@ -813,8 +813,8 @@ MonoBehaviour:
   coinText: {fileID: 2080574081}
   playerMovement: {fileID: 6691785812773730174}
   magnetLevel: 5
-  shieldLevel: 0
-  invincibleLevel: 0
+  shieldLevel: 5
+  invincibleLevel: 5
 --- !u!4 &1870427480
 Transform:
   m_ObjectHideFlags: 0
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 2006827219357100396, guid: 4aeef0f04e94dfd42bd402ae8c7add5a,
     type: 3}
-  spawnObstacles: 0
+  spawnObstacles: 1
   spawnPowerups: 1
   powerupOdds: 100
 --- !u!4 &2144336158

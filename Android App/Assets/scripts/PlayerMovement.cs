@@ -39,9 +39,10 @@ public class PlayerMovement : MonoBehaviour
         magTime = val;
     }
     bool magActive = false;
-    float shieldTime = 0f;
-    public void ShieldTime(float val){
-        shieldTime = val;
+    int shieldNum = 0;
+    public int ShieldNum{
+        get{return shieldNum;}
+        set{shieldNum = value;}
     }
     bool shieldActive = false;
     float invincTime = 0f;
@@ -49,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
         invincTime = val;
     }
     bool invincActive = false;
+    public bool isInvinc(){
+        return invincActive;
+    }
     
     void Start(){
         animator = GetComponent<Animator>();
@@ -122,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(magTime > 0f && !magActive)
             StartCoroutine(actMagnet());
-        if(shieldTime > 0f && !shieldActive)
+        if(shieldNum > 0f && !shieldActive)
             StartCoroutine(actShield());
         if(invincTime > 0f && !invincActive)
             StartCoroutine(actInvinc());
@@ -132,7 +136,8 @@ public class PlayerMovement : MonoBehaviour
     // arg: None
     // Desc: Restarts the game when the player dies
     public void Die()
-    {   animator.SetBool("isDead", true);
+    {   Debug.Log("You Died!!");
+        animator.SetBool("isDead", true);
         alive = false;  // Sets the alive bool to false
         Invoke("Restart", 2);   // Run the Restart function
     }
@@ -152,10 +157,8 @@ public class PlayerMovement : MonoBehaviour
             res = Physics.OverlapSphere(rb.position, 7f, coins);
             for(int i = 0; i < res.Length; i++){
                 Vector3 magnetField = rb.transform.position - res[i].gameObject.transform.position;
-                float index = (7f-magnetField.magnitude)/7f;
-                Debug.Log($"magnetic field: {magnetField}\t index: {index}\t coin #: {i}\t coin pos: {res[i].gameObject.transform.position}");
-                res[i].gameObject.GetComponent<Rigidbody>().MovePosition(res[i].gameObject.transform.position + magnetField * index);
-                Debug.Log($"coin #: {i} new coin pos: {res[i].gameObject.transform.position}");
+                float index = (8f-magnetField.magnitude)/8f;
+                res[i].gameObject.GetComponent<Rigidbody>().MovePosition(res[i].gameObject.transform.position + magnetField * index * 0.25f);
             }
             magTime -= Time.fixedDeltaTime;
             //Debug.Log($"{(int)res.Length} coins in sphere of magnet powerup");
@@ -167,8 +170,14 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator actShield(){
         shieldActive = true;
-        while(shieldTime > 0f){
-            Debug.Log("Shield still active");
+        while(shieldNum == 1)
+        {
+            Debug.Log("1 shield active");
+            yield return null;
+        }
+        while(shieldNum == 2)
+        {
+            Debug.Log("2 sheilds active");
             yield return null;
         }
         shieldActive = false;
@@ -178,9 +187,10 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator actInvinc(){
         invincActive = true;
         while(invincTime > 0f){
-            Debug.Log("Invincibility still active");
+            invincTime -= Time.fixedDeltaTime;
             yield return null;
         }
+        invincActive = false;
         yield return null;
     }
 }

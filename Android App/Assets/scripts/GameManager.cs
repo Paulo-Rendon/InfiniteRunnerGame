@@ -71,17 +71,19 @@ public class GameManager : MonoBehaviour
     public void actMagnet()
     {
         Debug.Log("Picked up a magnet powerup!");
-        playerMovement.MagTime((magnetLevel/2)*5f);
+        playerMovement.MagTime(((magnetLevel/2)+1)*5f);
     }
 
     public void actInvincible()
     {
         Debug.Log("Picked up a invincibility powerup!");
+        playerMovement.InvincTime(((invincibleLevel/2)+1)*5f);
     }
 
     public void actShield()
     {
         Debug.Log("Picked up a shield powerup!");
+        playerMovement.ShieldNum = (shieldLevel/2)+1;
     }
 
     private void Awake()
