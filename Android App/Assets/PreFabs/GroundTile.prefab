@@ -104,7 +104,7 @@ MonoBehaviour:
     type: 3}
   cactiPrefab: {fileID: 5637475599360410735, guid: 37b811980220ddf42b2b54dc93ea607e,
     type: 3}
-  magnetPrefab: {fileID: 1759565942326075831, guid: f91820ac24ed9a941b6f1d3191c66f2d,
+  magnetPrefab: {fileID: 2589420232601760104, guid: 01b3725c27f0f55418256326077e0d6b,
     type: 3}
   shieldPrefab: {fileID: 4616064257213360761, guid: 8f53566596eee414daac23ea011d7066,
     type: 3}
