@@ -106,9 +106,9 @@ MonoBehaviour:
     type: 3}
   magnetPrefab: {fileID: 2589420232601760104, guid: 01b3725c27f0f55418256326077e0d6b,
     type: 3}
-  shieldPrefab: {fileID: 4616064257213360761, guid: 8f53566596eee414daac23ea011d7066,
+  shieldPrefab: {fileID: 6385305847528565055, guid: 2b39c6dc891e2b4498eff2f64c965d4b,
     type: 3}
-  invinciblePrefab: {fileID: 115667225570068561, guid: 473e3c7738d91df4c8eb9a3a015945cb,
+  invinciblePrefab: {fileID: 797997461322751299, guid: 6e828d8b319efda479b0314779196a00,
     type: 3}
 --- !u!1 &2670828727187965493
 GameObject:
