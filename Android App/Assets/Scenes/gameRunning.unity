@@ -940,7 +940,7 @@ MonoBehaviour:
     type: 3}
   spawnObstacles: 1
   spawnPowerups: 1
-  powerupOdds: 100
+  powerupOdds: 5
 --- !u!4 &2144336158
 Transform:
   m_ObjectHideFlags: 0
